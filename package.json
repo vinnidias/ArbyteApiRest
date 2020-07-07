@@ -1,0 +1,16 @@
+{
+  "name": "api-rest-arbyte",
+  "version": "1.0.0",
+  "description": "api criada para estudos de api na arbyte",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node server.js"
+  },
+  "author": "vinicius dias santos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  }
+}
