@@ -3,8 +3,13 @@ const app = express();
 const routes = require('./src/routes')
 const port = process.env.PORT || 5000;
 const morgan = require('morgan')
+const bodyParser = require('body-parser')
+
 
 app.use(morgan('dev'))
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json())
+
 app.use(routes)
 app.use((req, res, next)=>{
     const err = new Error('Erro ao realizar consulta');

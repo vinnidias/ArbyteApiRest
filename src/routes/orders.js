@@ -21,8 +21,13 @@ router.get(`${routerName}/:id`, (req, res) => {
 //Cria um produto
 router.post(routerName, (req, res) => {
     
+    const order ={
+        product_id: req.body.product_id,
+        amount: req.body.amount
+    }
     res.status(201).json({
         message: 'Vai criar um pedido',
+        createdOrder: order
     })
 })
 
