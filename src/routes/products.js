@@ -1,28 +1,16 @@
 const { Router } = require('express')
 const router = new Router()
-const knex = require('../dataBase/index')
-
+const knex = require('../../dataBase/index')
+const controller = require('../controller/products')
 const routerName = '/products'
 const tableName = 'products'
 
-router.get(routerName, (req, res) => {
-    knex(tableName)
-        .then(result=> res.json(result))
-    
-})
+router.get(routerName, controller.getAll);
 
 
-router.get(`${routerName}/:id`, (req, res) => {
-  knex(tableName)
-    .where({id: req.params.id})
-    .then(([found])=>{res.json(found)})
-})
+router.get(`${routerName}/:id`, controller.getById )
 
-router.post(routerName, (req, res) => {
-    knex(tableName)
-        .insert(req.body)
-            .then(([inserted]) => res.status(201).json(inserted))
-})
+router.post(routerName, controller.create)
 
 router.patch(`${routerName}/:id`, async (req, res) => {
     try{
@@ -42,10 +30,6 @@ router.patch(`${routerName}/:id`, async (req, res) => {
 })
 
 
-router.delete(`${routerName}/:id`, (req,res) => {
-    knex(tableName)
-        .where({id: req.params.id})
-        .del()
-        .then(()=> res.status(204).end())
-    })
+router.delete(`${routerName}/:id`, controller.del);
+
 module.exports = router
