@@ -29,8 +29,18 @@ const create = async (req, res) => {
         handleError(res, error)
     }
 }
+
+const update = async (req, res) => {
+    try{
+        const updated = await service.update(req.params.id, req.body)
+        res.json(updated)
+    }catch(error){
+        handleError(res, error)
+    }
+}
 module.exports = {
     getAll,
     create,
     getById,
+    update,
 }

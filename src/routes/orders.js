@@ -13,12 +13,7 @@ router.get(`${routerName}/:id`, controller.getById)
 router.post(routerName, controller.create)
 
 //edita os dados de um produto
-router.patch(`${routerName}/:id`, (req, res) => {
-    res.json({
-        message: 'Vai editar os dados de um pedido dado um id',
-        id: req.params.id,
-    })
-})
+router.patch(`${routerName}/:id`, controller.update)
 
 //delete um produto
 router.delete(`${routerName}/:id`, (req,res) => res.status(204).end())

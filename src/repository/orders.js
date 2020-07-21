@@ -20,8 +20,11 @@ const create = (order) => {
         .then(([inserted]) => inserted)
 };
 
+const update =  (id, order) => knex(tableName).where({id: id}).update(order)
+
 module.exports = {
     getAll,
     create,
     getById,
+    update,
 }
