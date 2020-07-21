@@ -1,35 +1,16 @@
 const { Router } = require('express')
 const router = new Router()
+const controller = require('../controller/orders')
 const routerName = '/orders'
 
-
 //Lista todos os produtos, e será um array de produtos
-router.get(routerName, (req, res) => {
-    res.json([{
-        message: 'Vai retornar todos os pedidos'
-    }])
-})
+router.get(routerName, controller.getAll)
 
 //Pega os dados de um produto
-router.get(`${routerName}/:id`, (req, res) => {
-    res.json({
-        message: 'Vai retornar os dados de um pedido dado um id',
-        id: req.params.id,
-    })
-})
+router.get(`${routerName}/:id`, controller.getById)
 
 //Cria um produto
-router.post(routerName, (req, res) => {
-    
-    const order ={
-        product_id: req.body.product_id,
-        amount: req.body.amount
-    }
-    res.status(201).json({
-        message: 'Vai criar um pedido',
-        createdOrder: order
-    })
-})
+router.post(routerName, controller.create)
 
 //edita os dados de um produto
 router.patch(`${routerName}/:id`, (req, res) => {

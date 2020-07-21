@@ -8,7 +8,7 @@
     "start": "nodemon node server.js",
     "migration:create": "knex migrate:make",
     "migration:up": "knex migrate:latest",
-    "migration:down": "knex migrate:rollback"
+    "migration:down": "knex migrate:down"
   },
   "author": "vinicius dias santos",
   "license": "ISC",
